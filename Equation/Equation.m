@@ -10,62 +10,42 @@
 
 @implementation Equation
 
-@synthesize a,b,c;
+@synthesize val1,val2,num0,num1,num2,num3,num4,num5,num6,num7,num8,num9,ope;
 
-- (id)initWithA:(double)_a b:(double)_b c:(double)_c
+- (id)initWithVal1:(double)_val1 val2:(double)_val2  num0:(double)_num0 num1:(double)_num1 num2:(double)_num2 num3:(double)_num3 num4:(double)_num4 num5:(double)_num5 num6:(double)_num6 num7:(double)_num7 num8:(double)_num8 num9:(double)_num9 ope:(int)_ope;
 {
     self = [super init];
     if(self != nil) {
-        a = _a;
-        b = _b;
-        c = _c;
+        val1 = _val1;
+        val2 = _val2;
+        num0 = _num0;
+        num1 = _num1;
+        num2 = _num2;
+        num3 = _num3;
+        num4 = _num4;
+        num5 = _num5;
+        num6 = _num6;
+        num7 = _num7;
+        num8 = _num8;
+        num9 = _num9;
+        ope = _ope;
     }
     return self;
 }
 
-// 判別式 discriminant
-- (double)discriminant
+- (double)result1
 {
-    return b * b - 4 * a * c;
+    return val1;//test
 }
 
-// 実数解ならば true を返す
-- (BOOL)isReal
+- (double)result2
 {
-    return [self discriminant] >= 0;
+    return val2;//test
 }
 
-- (double)real1
+- (double)ope_eq1
 {
-    if([self isReal]) {
-        return (-b + sqrt([self discriminant]))/(2*a);
-    }
-    return (-b)/(2*a);
-}
-
-- (double)real2
-{
-    if([self isReal]) {
-        return (-b - sqrt([self discriminant]))/(2*a);
-    }
-    return (-b)/(2*a);
-}
-
-
-- (double)imaginary1
-{
-    if([self isReal]) {
-        return 0;
-    }
-    return (sqrt(-[self discriminant]))/(2*a);
-}
-
-- (double)imaginary2
-{
-    if([self isReal]) {
-        return 0;
-    }
-    return -(sqrt(-[self discriminant]))/(2*a);
+    return num1;//test
 }
 
 @end
