@@ -1,121 +1,145 @@
-//
-//  EquationViewController.m
-//  Equation
-//
-//  Created by 山崎 進 on 2012/12/12.
-//  Copyright (c) 2012年 zacky1972. All rights reserved.
-//
+//EquationViewController.m
 
 #import "EquationViewController.h"
 
 #import <math.h>
 #import "Equation.h"
 
-@interface EquationViewController ()
+@interface EquationViewController (){
+    Equation *e;
+}
 
 @end
 
 @implementation EquationViewController
 
-@synthesize labelResult1, labelResult2, labelOpeEq1;
+@synthesize labelResult1;
 
-@synthesize val1,val2,num0,num1,num2,num3,num4,num5,num6,num7,num8,num9,ope;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    val1 = 0;
-    val2 = 0;
-    num0 = 0;
-    num1 = 1;
-    num2 = 2;
-    num3 = 3;
-    num4 = 4;
-    num5 = 5;
-    num6 = 6;
-    num7 = 7;
-    num8 = 8;
-    num9 = 9;
-    ope = 0;
-    
-    
-    Equation *e = [[Equation alloc] initWithVal1:val1 val2:val2 num0:num0 num1:num1 num2:num2 num3:num3 num4:num4 num5:num5 num6:num6 num7:num7 num8:num8 num9:num9 ope:ope];
-    
-    [labelResult1 setText:[NSString stringWithFormat:@"%3.3f", [e result1]]];
-    [labelResult2 setText:[NSString stringWithFormat:@"%3.3f", [e result2]]];
-    [labelOpeEq1 setText:[NSString stringWithFormat:@"%3.3f", [e ope_eq1]]];
-    
+    e = [[Equation alloc] init];
 }
-/*
--(IBAction) showVal1{
-    [[labelResult1 setText:[NSString stringWithFormat:@"%f", [e result1]]]];
+
+- (void)refleshLabelNum{
+    [labelResult1 setText:[NSString stringWithFormat:@"%f",[e result2]]];
 }
-*/
- 
+
+- (void)refleshLabel{
+    [labelResult1 setText:[NSString stringWithFormat:@"%f",[e result1]]];
+}
+
+- (void)returnResultFunc{
+    [labelResult1 setText:[NSString stringWithFormat:@"%f",[e ope_eq1]]];
+}
+
 -(IBAction) returnNum0{
-    val1 = val1*10 + num0;
+    e.val1 = 0;
+    [self refleshLabelNum];
 }
 
 -(IBAction) returnNum1{
-    val1 = val1*10 + num1;
+    e.val1 = 1;
+    [self refleshLabelNum];
 }
 
 -(IBAction) returnNum2{
-    val1 = val1*10 + num2;
+    e.val1 = 2;
+    [self refleshLabelNum];
 }
 
 -(IBAction) returnNum3{
-    val1 = val1*10 + num3;
+    e.val1 = 3;
+        [self refleshLabelNum];
 }
 
 -(IBAction) returnNum4{
-    val1 = val1*10 + num4;
+    e.val1 = 4;
+        [self refleshLabelNum];
 }
 
 -(IBAction) returnNum5{
-    val1 = val1*10 + num5;
+    e.val1 = 5;
+        [self refleshLabelNum];
 }
 
 -(IBAction) returnNum6{
-    val1 = val1*10 + num6;
+    e.val1 = 6;
+        [self refleshLabelNum];
 }
 
 -(IBAction) returnNum7{
-    val1 = val1*10 + num7;
+    e.val1 = 7;
+        [self refleshLabelNum];
 }
 
 -(IBAction) returnNum8{
-    val1 = val1*10 + num8;
+    e.val1 = 8;
+        [self refleshLabelNum];
 }
 
 -(IBAction) returnNum9{
-    val1 = val1*10 + num9;
+    e.val1 = 9;
+        [self refleshLabelNum];
 }
 
 -(IBAction) returnOpeSum{
-    val2 = val1;
-    ope = 0;//plus
+    e.val3 = e.val2;
+    e.val2 = 0;
+    e.ope = 0;//sum
+    e.count = 0;
+    e.point = NO;
+    [self refleshLabel];
 }
 
 -(IBAction) returnOpeSub{
-    val2 = val1;
-    ope = 1;//plus
+    e.val3 = e.val2;
+    e.val2 = 0;
+    e.ope = 1;//sub
+    e.count = 0;
+    e.point = NO;
+    [self refleshLabel];
 }
 
 -(IBAction) returnOpeMult{
-    val2 = val1;
-    ope = 2;//plus
+    e.val3 = e.val2;
+    e.val2 = 0;
+    e.ope = 2;//multi
+    e.count = 0;
+    e.point = NO;
+    [self refleshLabel];
 }
 
 -(IBAction) returnOpeDiv{
-    val2 = val1;
-    ope = 3;//plus
+    e.val3 = e.val2;
+    e.val2 = 0;
+    e.ope = 3;//div
+    e.count = 0;
+    e.point = NO;
+    [self refleshLabel];
 }
 
+-(IBAction) returnResult{
+    e.count = 0;
+    e.point = NO;
+    [self returnResultFunc];
+}
 
+-(IBAction) clearVal{
+    e.val1 = 0;
+    e.val2 = 0;
+    e.val3 = 0;
+    e.count = 0;
+    e.point = NO;
+    [self refleshLabel];
+}
 
-
+-(IBAction) pointAdd{
+    e.count = 1;
+    e.point = YES;
+}
 
 
 
