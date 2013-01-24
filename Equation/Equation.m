@@ -4,12 +4,11 @@
 
 @implementation Equation
 
-@synthesize val1,val2,val3,ope,point,count;
-
+@synthesize val1,val2,val3,val4,ope,point,count,resultVal;
 
 - (double)result1
 {
-    return val2;//test
+    return val3;//test
 }
 
 - (double)result2
@@ -26,9 +25,27 @@
     return val2;
 }
 
+
 - (double)ope_eq1
 {
     NSLog(@"ope:%d\nval2:%f\nval3:%f",ope,val2,val3);
+    if (ope == 0){
+        val3 = val3 + val2;
+    }else if(ope == 1){
+        val3 = val3 - val2;
+    }else if(ope == 2){
+        val3 = val3 * val2;
+    }else if(ope == 3){
+        val3 = val3 / val2;
+    }
+    return val3;
+}
+ 
+
+
+
+- (double)display
+{
     if (ope == 0){
         val2 = val3 + val2;
     }else if(ope == 1){
@@ -42,5 +59,6 @@
     }
     return val2;
 }
+
 
 @end

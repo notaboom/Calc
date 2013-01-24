@@ -16,6 +16,7 @@
 @synthesize labelResult1;
 
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -33,6 +34,10 @@
 
 - (void)returnResultFunc{
     [labelResult1 setText:[NSString stringWithFormat:@"%f",[e ope_eq1]]];
+}
+
+- (void)returnResultOpe{
+    [labelResult1 setText:[NSString stringWithFormat:@"%f",[e display]]];
 }
 
 -(IBAction) returnNum0{
@@ -86,6 +91,7 @@
 }
 
 -(IBAction) returnOpeSum{
+    [self returnResultOpe];
     e.val3 = e.val2;
     e.val2 = 0;
     e.ope = 0;//sum
@@ -95,6 +101,7 @@
 }
 
 -(IBAction) returnOpeSub{
+    [self returnResultOpe];
     e.val3 = e.val2;
     e.val2 = 0;
     e.ope = 1;//sub
@@ -104,21 +111,31 @@
 }
 
 -(IBAction) returnOpeMult{
+    if(e.val2 == 0){
+        [self refleshLabel];
+    }else{
+    [self returnResultOpe];
     e.val3 = e.val2;
     e.val2 = 0;
     e.ope = 2;//multi
     e.count = 0;
     e.point = NO;
     [self refleshLabel];
-}
+    }
+    }
 
 -(IBAction) returnOpeDiv{
+    if(e.val2 == 0){
+        [self refleshLabel];
+    }else{
+    [self returnResultOpe];
     e.val3 = e.val2;
     e.val2 = 0;
     e.ope = 3;//div
     e.count = 0;
     e.point = NO;
     [self refleshLabel];
+    }
 }
 
 -(IBAction) returnResult{
@@ -133,6 +150,8 @@
     e.val3 = 0;
     e.count = 0;
     e.point = NO;
+    e.ope = 5;
+    e.resultVal = 0;
     [self refleshLabel];
 }
 
